@@ -12,11 +12,11 @@ struct Filters {
   var term: String = ""
   var sort: YelpSortMode?
   var radius: Int?
-  var categories: [Category]?
+  var categories = Set<Category>()
   var deals: Bool?
 
   var categoryCodes: [String]? {
-    return categories?.map { (category) -> String in
+    return categories.map { (category) -> String in
       return category.code
     }
   }

@@ -19,7 +19,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
   let searchBar = UISearchBar()
 
   var filters = Filters()
-  var businesses: [Business]! = []
+  var businesses: [Business] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -55,7 +55,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
   func searchAndReload() {
     Business.searchWithFilters(filters) { (businesses: [Business]!, error: NSError!) in
-      self.businesses = businesses
+      self.businesses = businesses ?? []
       self.tableView.reloadData()
     }
   }
@@ -98,6 +98,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
   func filtersViewController(filtersViewController: FiltersViewController, didSubmitWithFilters filters: Filters) {
     self.filters = filters
+    searchAndReload()
+    self.dismissViewControllerAnimated(true, completion: nil)
   }
 
 
