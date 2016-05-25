@@ -9,6 +9,7 @@
 import UIKit
 
 let BUSINESS_CELL_ID = "businessCell"
+let SEARCH_RESULT_CELL_ESTIMATED_HEIGHT: CGFloat = 80.0
 
 class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewControllerDelegate {
 
@@ -27,7 +28,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     configTableView()
     configNavigationBar()
 
-    searchAndReload()
+    loadSearchResultAppended(false)
   }
 
   override func didReceiveMemoryWarning() {
@@ -42,7 +43,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
   func configTableView() {
     let businessCellNib = UINib.init(nibName: "BusinessTableViewCell", bundle: nil)
     tableView.registerNib(businessCellNib, forCellReuseIdentifier: BUSINESS_CELL_ID)
-    tableView.estimatedRowHeight = 80
+    tableView.estimatedRowHeight = SEARCH_RESULT_CELL_ESTIMATED_HEIGHT
     tableView.rowHeight = UITableViewAutomaticDimension
   }
 
@@ -51,11 +52,33 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     searchBar.delegate = self
   }
 
+  func startInfiniteScrollLoading() {
+    let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    spinner.startAnimating()
+    spinner.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: SEARCH_RESULT_CELL_ESTIMATED_HEIGHT)
+    spinner.color = UIColor.yelpLightGray()
+
+    tableView.tableFooterView = spinner
+  }
+
+  func endLoading() {
+    tableView.tableFooterView = nil
+  }
+
   // MARK: - Data
 
-  func searchAndReload() {
-    Business.searchWithFilters(filters) { (businesses: [Business]!, error: NSError!) in
-      self.businesses = businesses ?? []
+  func loadSearchResultAppended(appended: Bool, offset: Int? = nil, limit: Int? = nil) {
+    Business.searchWithFilters(filters, offset: offset, limit: limit) { (businesses: [Business]!, error: NSError!) in
+      if (error != nil) {
+        return;
+      }
+
+      if (appended) {
+        self.businesses.appendContentsOf(businesses)
+      } else {
+        self.businesses = businesses ?? []
+      }
+
       self.tableView.reloadData()
     }
   }
@@ -72,6 +95,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
     cell.showBusiness(self.businesses[indexPath.row])
 
+    // infinite scrolling
+    if (indexPath.row == self.businesses.count - 2) {
+      loadSearchResultAppended(true, offset: self.businesses.count)
+      startInfiniteScrollLoading()
+    }
+
     return cell
   }
 
@@ -80,7 +109,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     filters.term = searchBar.text ?? ""
     searchBar.resignFirstResponder()
-    searchAndReload()
+    loadSearchResultAppended(false)
   }
 
   // MARK: - Filter
@@ -98,7 +127,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
   func filtersViewController(filtersViewController: FiltersViewController, didSubmitWithFilters filters: Filters) {
     self.filters = filters
-    searchAndReload()
+    loadSearchResultAppended(false)
     self.dismissViewControllerAnimated(true, completion: nil)
   }
 
