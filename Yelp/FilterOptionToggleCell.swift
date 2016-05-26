@@ -12,16 +12,16 @@ protocol FilterOptionToggleCellDelegate: class {
   func filterOptionToggleCell(filterOptionToggleCell: FilterOptionToggleCell, didChangeValue value: Bool)
 }
 
-class FilterOptionToggleCell: UITableViewCell {
+class FilterOptionToggleCell: UITableViewCell, YelpSwitchControlDelegate {
 
   @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var valueSwitch: UISwitch!
+  @IBOutlet weak var valueSwitch: YelpSwitchControl!
 
   weak var delegate: FilterOptionToggleCellDelegate?
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
+    valueSwitch.delegate = self
   }
 
   override func setSelected(selected: Bool, animated: Bool) {
@@ -35,7 +35,7 @@ class FilterOptionToggleCell: UITableViewCell {
     valueSwitch.on = value
   }
 
-  @IBAction func switchDidChangeValue(sender: UISwitch) {
-    self.delegate?.filterOptionToggleCell(self, didChangeValue: sender.on)
+  func yelpSwitchControl(yelpSwitchControl: YelpSwitchControl, didChangeValue on: Bool) {
+    self.delegate?.filterOptionToggleCell(self, didChangeValue: on)
   }
 }

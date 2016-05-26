@@ -12,6 +12,7 @@ class FilterChoiceOptionCell: UITableViewCell {
 
   override func awakeFromNib() {
     super.awakeFromNib()
+    self.tintColor = UIColor.yelpCyanColor()
   }
 
   override func setSelected(selected: Bool, animated: Bool) {

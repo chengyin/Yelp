@@ -58,4 +58,8 @@ extension UIColor {
   class func yelpLightGray() -> UIColor {
     return UIColor(red:0.70, green:0.70, blue:0.70, alpha:1.00)
   }
+
+  class func yelpCyanColor() -> UIColor {
+    return UIColor(red:0.10, green:0.60, blue:0.91, alpha:1.00)
+  }
 }

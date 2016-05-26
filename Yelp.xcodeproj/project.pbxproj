@@ -31,6 +31,9 @@
 		1A5539611CF6651200C6A73B /* BusinessesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A55395F1CF6651200C6A73B /* BusinessesViewController.xib */; };
 		1A5539631CF67D7F00C6A73B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5539621CF67D7F00C6A73B /* MapKit.framework */; };
 		1A5539651CF76E4A00C6A73B /* YelpBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5539641CF76E4A00C6A73B /* YelpBarButtonItem.swift */; };
+		1A5539671CF771FE00C6A73B /* YelpSwitchControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5539661CF771FE00C6A73B /* YelpSwitchControl.swift */; };
+		1A55396C1CF7A4AE00C6A73B /* BusinessesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A55396A1CF7A4AE00C6A73B /* BusinessesNavigationViewController.swift */; };
+		1A55396D1CF7A4AE00C6A73B /* BusinessesNavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A55396B1CF7A4AE00C6A73B /* BusinessesNavigationViewController.xib */; };
 		1ADBBBB11CF508C900EAC15F /* SeeAllTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBBBAF1CF508C900EAC15F /* SeeAllTableViewCell.swift */; };
 		1ADBBBB21CF508C900EAC15F /* SeeAllTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADBBBB01CF508C900EAC15F /* SeeAllTableViewCell.xib */; };
 		222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D8A5A19CCF9F900D2DB53 /* AppDelegate.swift */; };
@@ -79,6 +82,9 @@
 		1A55395F1CF6651200C6A73B /* BusinessesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessesViewController.xib; sourceTree = "<group>"; };
 		1A5539621CF67D7F00C6A73B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1A5539641CF76E4A00C6A73B /* YelpBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpBarButtonItem.swift; sourceTree = "<group>"; };
+		1A5539661CF771FE00C6A73B /* YelpSwitchControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpSwitchControl.swift; sourceTree = "<group>"; };
+		1A55396A1CF7A4AE00C6A73B /* BusinessesNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessesNavigationViewController.swift; sourceTree = "<group>"; };
+		1A55396B1CF7A4AE00C6A73B /* BusinessesNavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessesNavigationViewController.xib; sourceTree = "<group>"; };
 		1ADBBBAF1CF508C900EAC15F /* SeeAllTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllTableViewCell.swift; sourceTree = "<group>"; };
 		1ADBBBB01CF508C900EAC15F /* SeeAllTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeeAllTableViewCell.xib; sourceTree = "<group>"; };
 		222D8A5519CCF9F900D2DB53 /* Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +140,7 @@
 				1A5539461CF5220800C6A73B /* FilterChoiceOptionCell.swift */,
 				1A5539471CF5220800C6A73B /* FilterChoiceOptionCell.xib */,
 				1A5539641CF76E4A00C6A73B /* YelpBarButtonItem.swift */,
+				1A5539661CF771FE00C6A73B /* YelpSwitchControl.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -231,6 +238,8 @@
 				1A55395A1CF6613500C6A73B /* BusinessesDisplayView.swift */,
 				1A55395E1CF6651200C6A73B /* BusinessesViewController.swift */,
 				1A55395F1CF6651200C6A73B /* BusinessesViewController.xib */,
+				1A55396A1CF7A4AE00C6A73B /* BusinessesNavigationViewController.swift */,
+				1A55396B1CF7A4AE00C6A73B /* BusinessesNavigationViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -352,6 +361,7 @@
 				222D8A6519CCF9F900D2DB53 /* LaunchScreen.xib in Resources */,
 				1A5539491CF5220800C6A73B /* FilterChoiceOptionCell.xib in Resources */,
 				1A4991BE1CF3BA8200F14F01 /* BusinessTableViewCell.xib in Resources */,
+				1A55396D1CF7A4AE00C6A73B /* BusinessesNavigationViewController.xib in Resources */,
 				222D8A6219CCF9F900D2DB53 /* Images.xcassets in Resources */,
 				1A3E4C091CF3CD6200B49E09 /* FiltersViewController.xib in Resources */,
 				1A4991BA1CF3BA7300F14F01 /* BusinessesListViewController.xib in Resources */,
@@ -481,8 +491,10 @@
 				1A55395B1CF6613500C6A73B /* BusinessesDisplayView.swift in Sources */,
 				1A3E4C0B1CF3D73D00B49E09 /* Filters.swift in Sources */,
 				1A5539601CF6651200C6A73B /* BusinessesViewController.swift in Sources */,
+				1A55396C1CF7A4AE00C6A73B /* BusinessesNavigationViewController.swift in Sources */,
 				1A5539651CF76E4A00C6A73B /* YelpBarButtonItem.swift in Sources */,
 				1A4991B91CF3BA7300F14F01 /* BusinessesListViewController.swift in Sources */,
+				1A5539671CF771FE00C6A73B /* YelpSwitchControl.swift in Sources */,
 				1A4991BD1CF3BA8200F14F01 /* BusinessTableViewCell.swift in Sources */,
 				1ADBBBB11CF508C900EAC15F /* SeeAllTableViewCell.swift in Sources */,
 			);

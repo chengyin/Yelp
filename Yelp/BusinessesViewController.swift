@@ -13,7 +13,7 @@ enum BusinessesResultViewType {
 }
 
 class BusinessesViewController:
-  UIViewController,
+  UINavigationController,
   UISearchBarDelegate,
   FiltersViewControllerDelegate,
   BussinessesDisplayViewControllerDelegate {

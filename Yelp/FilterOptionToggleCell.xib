@@ -15,37 +15,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IlV-0e-6IG">
-                        <rect key="frame" x="263" y="6" width="51" height="31"/>
-                        <color key="onTintColor" red="0.76862745099999996" green="0.070588235289999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <action selector="switchDidChangeValue:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Vyh-yx-mhh"/>
-                        </connections>
-                    </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwZ-8y-Efp">
                         <rect key="frame" x="16" y="12" width="39.5" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="70" placeholderIntrinsicHeight="30" translatesAutoresizingMaskIntoConstraints="NO" id="pBS-1Q-An4" customClass="YelpSwitchControl" customModule="Yelp" customModuleProvider="target">
+                        <rect key="frame" x="242" y="7" width="70" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="XwZ-8y-Efp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2uN-AT-bmK"/>
-                    <constraint firstItem="IlV-0e-6IG" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="5Wh-Ow-cHK"/>
+                    <constraint firstItem="pBS-1Q-An4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XwZ-8y-Efp" secondAttribute="trailing" constant="8" id="BPs-8w-2T7"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="pBS-1Q-An4" secondAttribute="trailing" id="Hue-0N-Iqu"/>
+                    <constraint firstItem="pBS-1Q-An4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="czu-Pr-Pwk"/>
                     <constraint firstItem="XwZ-8y-Efp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="fxq-jt-N8M"/>
-                    <constraint firstItem="IlV-0e-6IG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XwZ-8y-Efp" secondAttribute="trailing" id="gLi-eB-tiC"/>
-                    <constraint firstItem="IlV-0e-6IG" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="kFd-R8-MIg"/>
-                    <constraint firstItem="IlV-0e-6IG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rkK-SE-eIl"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="kFd-R8-MIg"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="XwZ-8y-Efp" id="gJ4-dO-eRl"/>
-                <outlet property="valueSwitch" destination="IlV-0e-6IG" id="1td-nj-7es"/>
+                <outlet property="valueSwitch" destination="pBS-1Q-An4" id="sEx-1X-2WS"/>
             </connections>
         </tableViewCell>
     </objects>
