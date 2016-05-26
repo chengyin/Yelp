@@ -13,14 +13,14 @@ enum BusinessesResultViewType {
 }
 
 class BusinessesViewController:
-  UINavigationController,
+  UIViewController,
   UISearchBarDelegate,
   FiltersViewControllerDelegate,
   BussinessesDisplayViewControllerDelegate {
-  @IBOutlet weak var subAreaView: UIView!
-  @IBOutlet weak var navigationBarItem: UINavigationItem!
-  @IBOutlet weak var mapListSwitchButton: UIBarButtonItem!
 
+  @IBOutlet weak var subAreaView: UIView!
+
+  var mapListSwitchButton: UIBarButtonItem!
   let searchBar = UISearchBar()
   var filters = Filters()
   var businesses: [Business] = []
@@ -41,13 +41,13 @@ class BusinessesViewController:
   }
 
   func configNavigationBar() {
-    navigationBarItem.titleView = searchBar
-    //navigationBarItem.rightBarButtonItem = UIBarButtonItem.initYelpButtonWithTitle("Map")
-    searchBar.delegate = self
-  }
+    mapListSwitchButton = UIBarButtonItem(title: "Map", style: .Plain, target: self, action: #selector(BusinessesViewController.didTapMapListSwitchButton(_:)))
 
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return .LightContent
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filters", style: .Plain, target: self, action: #selector(BusinessesViewController.didTapFilters(_:)))
+    navigationItem.titleView = searchBar
+    navigationItem.rightBarButtonItem = mapListSwitchButton
+
+    searchBar.delegate = self
   }
 
   override func didReceiveMemoryWarning() {
@@ -134,11 +134,11 @@ class BusinessesViewController:
 
   // MARK: - Navigation Bar Functions
 
-  @IBAction func didTapMapListSwitchButton(sender: AnyObject) {
+  func didTapMapListSwitchButton(sender: AnyObject) {
     switchBetweenListAndMapViewController()
   }
 
-  @IBAction func didTapFilters(sender: AnyObject) {
+  func didTapFilters(sender: AnyObject) {
     let vc = FiltersViewController.init(withFilters: filters)
     vc.delegate = self
 

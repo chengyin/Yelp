@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
 
     //let vc = SearchResultsViewController()
-    let vc = BusinessesViewController()
+    let vc = BusinessesNavigationViewController()
     window?.rootViewController = vc
     window?.makeKeyAndVisible()
 
