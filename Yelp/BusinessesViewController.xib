@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessesViewController" customModule="Yelp" customModuleProvider="target">
+            <connections>
+                <outlet property="mapListSwitchButton" destination="KqT-az-rvI" id="OBJ-fs-5QX"/>
+                <outlet property="navigationBarItem" destination="SFz-0k-UGv" id="XYw-Ge-LzL"/>
+                <outlet property="subAreaView" destination="92y-Fh-K8o" id="DGD-zS-CaL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eq4-Nl-cnn">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                    <color key="backgroundColor" red="0.76862745099999996" green="0.070588235289999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="0qO-xB-lsL"/>
+                        <constraint firstAttribute="height" constant="20" id="SHF-xB-mfc"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="0qO-xB-lsL"/>
+                        </mask>
+                    </variation>
+                </view>
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPl-cQ-s4n">
+                    <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="RIA-sy-8A8"/>
+                    </constraints>
+                    <color key="barTintColor" red="0.76862745099999996" green="0.070588235289999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Title" id="SFz-0k-UGv" userLabel="Search">
+                            <barButtonItem key="leftBarButtonItem" title="Filters" id="UXJ-91-OpR">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="didTapFilters:" destination="-1" id="zic-QP-GxA"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="Map" id="KqT-az-rvI">
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="didTapMapListSwitchButton:" destination="-1" id="aMM-F5-Any"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92y-Fh-K8o">
+                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pPl-cQ-s4n" firstAttribute="top" secondItem="Eq4-Nl-cnn" secondAttribute="bottom" id="CKS-Dx-HAI"/>
+                <constraint firstItem="92y-Fh-K8o" firstAttribute="top" secondItem="pPl-cQ-s4n" secondAttribute="bottom" id="F3E-CA-Z6H"/>
+                <constraint firstAttribute="trailing" secondItem="pPl-cQ-s4n" secondAttribute="trailing" id="GXH-cv-hJK"/>
+                <constraint firstItem="Eq4-Nl-cnn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HgM-I7-fpr"/>
+                <constraint firstAttribute="trailing" secondItem="92y-Fh-K8o" secondAttribute="trailing" id="IQW-AW-jzQ"/>
+                <constraint firstItem="Eq4-Nl-cnn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pne-UM-r0p"/>
+                <constraint firstItem="pPl-cQ-s4n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZCs-Hq-4rc"/>
+                <constraint firstAttribute="trailing" secondItem="Eq4-Nl-cnn" secondAttribute="trailing" id="hMt-RO-qxC"/>
+                <constraint firstItem="92y-Fh-K8o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ivN-Va-ivw"/>
+                <constraint firstAttribute="bottom" secondItem="92y-Fh-K8o" secondAttribute="bottom" id="wxr-x1-6ou"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

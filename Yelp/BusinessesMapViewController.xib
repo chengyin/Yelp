@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessesMapViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessesMapViewController" customModule="Yelp" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="F4X-Nq-P5d" id="hfE-Yh-GAq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +15,18 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="F4X-Nq-P5d">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </mapView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="F4X-Nq-P5d" secondAttribute="bottom" id="2Fr-7C-TQb"/>
+                <constraint firstItem="F4X-Nq-P5d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZDx-ja-JCo"/>
+                <constraint firstItem="F4X-Nq-P5d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eLv-aN-8o9"/>
+                <constraint firstAttribute="trailing" secondItem="F4X-Nq-P5d" secondAttribute="trailing" id="kNS-PF-Cpj"/>
+            </constraints>
         </view>
     </objects>
 </document>

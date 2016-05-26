@@ -7,29 +7,46 @@
 //
 
 import UIKit
+import MapKit
 
-class BusinessesMapViewController: UIViewController {
+class BusinessesMapViewController: UIViewController, BusinessesDisplayViewControllerProtocol {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  @IBOutlet weak var mapView: MKMapView!
 
-        // Do any additional setup after loading the view.
+  var businesses: [Business] = []
+  weak var delegate: BussinessesDisplayViewControllerDelegate?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+  }
+
+  func setBusiness(businesses: [Business]) {
+    mapView.removeAnnotations(mapView.annotations)
+    self.businesses = businesses
+    addBusinessesOntoMap()
+  }
+
+  func addBusinessesOntoMap() {
+    var annotations: [MKPointAnnotation] = []
+
+    for business in self.businesses {
+      let lat = business.lat
+      let lon = business.lon
+
+      if (lat == nil || lon == nil) {
+        continue;
+      }
+
+      let annotation = MKPointAnnotation()
+
+      annotation.coordinate = CLLocationCoordinate2D(latitude: business.lat!, longitude: business.lon!)
+      annotation.title = business.name
+      annotations.append(annotation)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    mapView.showAnnotations(annotations, animated: true)  }
 }
