@@ -9,6 +9,7 @@
 import UIKit
 
 protocol BussinessesDisplayViewControllerDelegate: class {
+  func didSelectedBusiness(business: Business)
   func loadNextPage(completion: (() -> ())?)
 }
 

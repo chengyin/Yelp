@@ -19,8 +19,9 @@ class BusinessesViewController:
   BussinessesDisplayViewControllerDelegate {
 
   @IBOutlet weak var subAreaView: UIView!
+  @IBOutlet var viewTapRecognizer: UITapGestureRecognizer!
 
-  var mapListSwitchButton: UIBarButtonItem!
+  var mapListSwitchButton: YelpButton!
   let searchBar = UISearchBar()
   var filters = Filters()
   var businesses: [Business] = []
@@ -33,21 +34,41 @@ class BusinessesViewController:
 
     configNavigationBar()
     loadSearchResultAppended(false)
+    displayChildViewController(getChildViewControllerWithType(displayType))
   }
 
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
-    displayChildViewController(getChildViewControllerWithType(displayType))
   }
 
   func configNavigationBar() {
-    mapListSwitchButton = UIBarButtonItem(title: "Map", style: .Plain, target: self, action: #selector(BusinessesViewController.didTapMapListSwitchButton(_:)))
-
-    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filters", style: .Plain, target: self, action: #selector(BusinessesViewController.didTapFilters(_:)))
-    navigationItem.titleView = searchBar
-    navigationItem.rightBarButtonItem = mapListSwitchButton
-
     searchBar.delegate = self
+    searchBar.barTintColor = UIColor.yelpRedColor()
+    searchBar.placeholder = "Search"
+
+    mapListSwitchButton = YelpButton()
+    mapListSwitchButton.setTitle("Map", forState: .Normal)
+    mapListSwitchButton.addTarget(
+      self,
+      action: #selector(BusinessesViewController.didTapMapListSwitchButton(_:)),
+      forControlEvents: .TouchUpInside
+    )
+    mapListSwitchButton.sizeToFit()
+
+    let filterButton = YelpButton()
+    filterButton.setTitle("Filter", forState: .Normal)
+    filterButton.addTarget(
+      self,
+      action: #selector(BusinessesViewController.didTapFilters(_:)),
+      forControlEvents: .TouchUpInside
+    )
+    filterButton.sizeToFit()
+
+    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: filterButton)
+    navigationItem.titleView = searchBar
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: mapListSwitchButton)
+    mapListSwitchButton.frame.offsetInPlace(dx: 15, dy: 0)
+    filterButton.frame.offsetInPlace(dx: -15, dy: 0)
   }
 
   override func didReceiveMemoryWarning() {
@@ -114,7 +135,7 @@ class BusinessesViewController:
     vc.willMoveToParentViewController(nil)
 
     addSubview(nextVC.view, toView: subAreaView)
-    self.mapListSwitchButton.title = nextLabel
+    self.mapListSwitchButton.setTitle(nextLabel, forState: .Normal)
 
     UIView.transitionFromView(
       vc.view,
@@ -172,12 +193,31 @@ class BusinessesViewController:
     loadSearchResultAppended(true, offset: self.businesses.count, completion: completion)
   }
 
+  func didSelectedBusiness(business: Business) {
+    let vc = BusinessDetailsViewController(nibName: "BusinessDetailsViewController", bundle: nil)
+    vc.business = business
+
+    navigationController?.pushViewController(vc, animated: true)
+  }
+
   // MARK: - SearchBar
 
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     filters.term = searchBar.text ?? ""
     searchBar.resignFirstResponder()
     loadSearchResultAppended(false)
+  }
+
+  func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    viewTapRecognizer.enabled = true
+  }
+
+  func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    viewTapRecognizer.enabled = false
+  }
+
+  @IBAction func didTapView(sender: AnyObject) {
+    searchBar.resignFirstResponder()
   }
 
   // MARK: - Filter

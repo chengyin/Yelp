@@ -11,7 +11,11 @@ import UIKit
 let BUSINESS_CELL_ID = "businessCell"
 let SEARCH_RESULT_CELL_ESTIMATED_HEIGHT: CGFloat = 80.0
 
-class BusinessesListViewController: UIViewController, BusinessesDisplayViewControllerProtocol, UITableViewDataSource, UITableViewDelegate {
+class BusinessesListViewController:
+  UIViewController,
+  BusinessesDisplayViewControllerProtocol,
+  UITableViewDataSource,
+  UITableViewDelegate {
 
   @IBOutlet weak var tableView: UITableView!
   var businesses: [Business] = []
@@ -75,5 +79,10 @@ class BusinessesListViewController: UIViewController, BusinessesDisplayViewContr
     }
 
     return cell
+  }
+
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    delegate?.didSelectedBusiness(businesses[indexPath.row])
   }
 }

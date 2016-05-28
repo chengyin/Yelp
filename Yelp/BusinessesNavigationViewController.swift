@@ -16,7 +16,7 @@ class BusinessesNavigationViewController: UINavigationController {
     let vc = BusinessesViewController()
     pushViewController(vc, animated: true)
     navigationBar.translucent = false
-    navigationBar.barTintColor = UIColor.yelpRedColor()
+    navigationBar.barTintColor = UIColor(red:0.79, green:0.09, blue:0.09, alpha:1.00)
     navigationBar.tintColor = UIColor.whiteColor()
   }
 

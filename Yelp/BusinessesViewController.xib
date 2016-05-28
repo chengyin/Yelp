@@ -2,13 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessesViewController" customModule="Yelp" customModuleProvider="target">
             <connections>
                 <outlet property="subAreaView" destination="92y-Fh-K8o" id="DGD-zS-CaL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewTapRecognizer" destination="0a1-eh-7N7" id="tkK-8I-aFI"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,6 +20,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92y-Fh-K8o">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="0a1-eh-7N7" appends="YES" id="wyh-qf-6oH"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -29,5 +34,10 @@
                 <constraint firstAttribute="bottom" secondItem="92y-Fh-K8o" secondAttribute="bottom" id="wxr-x1-6ou"/>
             </constraints>
         </view>
+        <tapGestureRecognizer enabled="NO" id="0a1-eh-7N7">
+            <connections>
+                <action selector="didTapView:" destination="-1" id="4mS-01-uDN"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
