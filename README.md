@@ -2,6 +2,10 @@
 
 ![GIF](./Yelp.gif)
 
+Submitted by: Chengyin Liu
+
+Time spent: 30 hours spent in total
+
 ## User Stories
 
 ### Search results page
@@ -22,4 +26,21 @@
 - [x] Distance filter should expand as in the real Yelp app.
 - [x] Categories should show a subset of the full list with a "See All" row to expand.
 
-- [ ] Optional: Implement the restaurant detail page.
+- [x] Optional: Implement the restaurant detail page.
+
+## License
+
+    Copyright 2016 Chengyin Liu
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
