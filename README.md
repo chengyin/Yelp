@@ -1,5 +1,7 @@
 # Yelp
 
+![GIF](./Yelp.gif)
+
 ## User Stories
 
 ### Search results page
